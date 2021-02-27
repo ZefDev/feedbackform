@@ -10,7 +10,8 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-8">
-    <form class="needs-validation was-validated" novalidate="">
+    <form class="needs-validation was-validated" action = "/requests/create" novalidate="" method = "post">
+      <input type = "hidden" name = "_token" value = "{{ csrf_token() }}">
       <div class="form-group">
         <label for="email">Email address</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
