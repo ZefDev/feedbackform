@@ -8,6 +8,14 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/form-validation.css')}} " rel="stylesheet">
   </head>
+  <header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+  <div class="container-fluid d-flex align-items-center">
+      <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+        Feed back form
+      </h1>
+      <a href="{{route('signin')}}" class="ms-auto link-light" hreflang="ar">Sign in</a>
+    </div>
+  </header>
   <body class="bg-light">
 
     <main>

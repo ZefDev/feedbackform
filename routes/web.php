@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RequestsController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,7 @@ use App\Http\Controllers\RequestsController;
 Route::get('/', function () {
     return view('feedbackform');
 });
+Route::get('/signin', [UserController::class, 'index'])->name('signin');;
 Route::get('/requests', [RequestsController::class, 'store'])->name('requests.store');
 Route::post('/requests/create', [RequestsController::class, 'create'])->name('requests.create');
 Route::post('/requests/edit', [RequestsController::class, 'edit'])->name('requests.edit');

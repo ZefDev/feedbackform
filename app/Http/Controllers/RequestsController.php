@@ -15,7 +15,7 @@ class RequestsController extends Controller
    */
   public function index()
   {
-    $requests =  Requests::paginate(10);
+    $requests =  Requests::paginate(5);
     return View('requests',compact('requests'));
   }
 
