@@ -13,7 +13,11 @@
       <h1 class="d-flex align-items-center fs-4 text-white mb-0">
         Feed back form
       </h1>
-      <a href="{{route('signin')}}" class="ms-auto link-light" hreflang="ar">Sign in</a>
+      @if(Auth::check())
+      <a href="{{route('logout')}}" class="ms-auto link-light" hreflang="ar">Logout</a>
+      @else
+        <a href="{{route('signin')}}" class="ms-auto link-light" hreflang="ar">Sign in</a>
+      @endif
     </div>
   </header>
   <body class="bg-light">

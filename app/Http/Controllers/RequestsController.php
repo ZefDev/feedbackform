@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Requests;
 use App\Http\Requests\ValidationRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RequestsController extends Controller
 {
@@ -15,6 +16,9 @@ class RequestsController extends Controller
    */
   public function index()
   {
+    if (!Auth::user()){
+        return view('signin');
+    }
     $requests =  Requests::paginate(5);
     return View('requests',compact('requests'));
   }
@@ -44,6 +48,9 @@ class RequestsController extends Controller
    */
   public function store(Request $request)
   {
+      if (!Auth::user()){
+          return view('signin');
+      }
       $requests =  Requests::paginate(5);
       return View('requests',compact('requests'));
   }
@@ -67,6 +74,9 @@ class RequestsController extends Controller
    */
   public function edit(Request $Request)
   {
+    if (!Auth::user()){
+        return view('signin');
+    }
     $requests = Requests::find($Request->input('id_req'));
     return View('edit',compact('requests'));
   }
@@ -80,6 +90,9 @@ class RequestsController extends Controller
    */
   public function update(Request $request, Requests $requests)
   {
+      if (!Auth::user()){
+        return view('signin');
+      }
       $requests = Requests::find($request->input('id_req'));
       $requests->name = $request->input('name');
       $requests->email = $request->input('email');
@@ -98,6 +111,9 @@ class RequestsController extends Controller
    */
   public function destroy(Request $Request)
   {
+      if (!Auth::user()){
+        return view('signin');
+      }
       $requests = Requests::find($Request->input('id_req'));
       $requests->delete();
       return redirect()->route('requests.store');

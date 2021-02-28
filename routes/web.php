@@ -18,7 +18,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('feedbackform');
 });
-Route::get('/signin', [UserController::class, 'index'])->name('signin');;
+Route::get('/signin', [UserController::class, 'index'])->name('signin');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/signin/authenticate', [UserController::class, 'authenticate'])->name('signin.authenticate');
 Route::get('/requests', [RequestsController::class, 'store'])->name('requests.store');
 Route::post('/requests/create', [RequestsController::class, 'create'])->name('requests.create');
 Route::post('/requests/edit', [RequestsController::class, 'edit'])->name('requests.edit');
