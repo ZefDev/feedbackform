@@ -17,5 +17,8 @@ use App\Http\Controllers\RequestsController;
 Route::get('/', function () {
     return view('feedbackform');
 });
-Route::get('/requests', [RequestsController::class, 'store']);
-Route::post('/requests/create', [RequestsController::class, 'create']);
+Route::get('/requests', [RequestsController::class, 'store'])->name('requests.store');
+Route::post('/requests/create', [RequestsController::class, 'create'])->name('requests.create');
+Route::post('/requests/edit', [RequestsController::class, 'edit'])->name('requests.edit');
+Route::post('/requests/destroy', [RequestsController::class, 'destroy'])->name('requests.destroy');
+Route::post('/requests/update', [RequestsController::class, 'update'])->name('requests.update');

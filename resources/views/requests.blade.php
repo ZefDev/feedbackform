@@ -29,6 +29,19 @@
             <td>{{$item->number_phone}}</td>
             <td>{{$item->message}}</td>
             <td>{{$item->status}}</td>
+            <td> <form method="post" action="{{ route('requests.edit') }}">
+                @csrf
+                <input type="hidden" name="id_req" value="{{$item->id}}"/>
+                <button type="submit" class="btn btn-warning">Edit</button>
+              </form>
+            </td>
+            <td>
+              <form method="post" action="{{ route('requests.destroy') }}">
+                @csrf
+                <input type="hidden" name="id_req" value="{{$item->id}}"/>
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
           </tr>
           @endforeach
         </tbody>

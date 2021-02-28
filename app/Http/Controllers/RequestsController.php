@@ -14,9 +14,8 @@ class RequestsController extends Controller
    */
   public function index()
   {
-    //$author = Author::get_author();
-    //$author =  Author::with('books')->paginate(6);
-    //return View('author',compact('author'));
+    $requests =  Requests::paginate(10);
+    return View('requests',compact('requests'));
   }
 
   /**
@@ -44,7 +43,6 @@ class RequestsController extends Controller
    */
   public function store(Request $request)
   {
-    //$author = Author::get_author();
       $requests =  Requests::paginate(10);
       return View('requests',compact('requests'));
   }
@@ -52,10 +50,10 @@ class RequestsController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  \App\Models\Author  $author
+   * @param  \App\Models\Requests  $requests
    * @return \Illuminate\Http\Response
    */
-  public function show(Author $author)
+  public function show(Requests $requests)
   {
       //
   }
@@ -63,34 +61,44 @@ class RequestsController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\Models\Author  $author
+   * @param  \App\Models\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function edit(Author $author)
+  public function edit(Request $Request)
   {
-      //
+    $requests = Requests::find($Request->input('id_req'));
+    return View('edit',compact('requests'));
   }
 
   /**
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Models\Author  $author
+   * @param  \App\Models\Requests  $requests
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Author $author)
+  public function update(Request $request, Requests $requests)
   {
-      //
+      $requests = Requests::find($request->input('id_req'));
+      $requests->name = $request->input('name');
+      $requests->email = $request->input('email');
+      $requests->number_phone = $request->input('number_phone');
+      $requests->message = $request->input('message');
+      $requests->status = (boolean)$request->input('status');
+      $requests->save();
+      return redirect()->route('requests.store');
   }
 
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\Models\Author  $author
+   * @param  \App\Models\Request  $Request
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Author $author)
+  public function destroy(Request $Request)
   {
-      //
+      $requests = Requests::find($Request->input('id_req'));
+      $requests->delete();
+      return redirect()->route('requests.store');
   }
 }
