@@ -84,7 +84,7 @@ class RequestsController extends Controller
       $requests->email = $request->input('email');
       $requests->number_phone = $request->input('number_phone');
       $requests->message = $request->input('message');
-      $requests->status = (boolean)$request->input('status');
+      $requests->status = $request->input('status');
       $requests->save();
       return redirect()->route('requests.store');
   }

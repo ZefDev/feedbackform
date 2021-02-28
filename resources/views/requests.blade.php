@@ -28,7 +28,12 @@
             <td>{{$item->email}}</td>
             <td>{{$item->number_phone}}</td>
             <td>{{$item->message}}</td>
-            <td>{{$item->status}}</td>
+            <td>@if($item->status == 1)
+                  <span>reviewed</span>
+                @else
+                  <span>not reviewed</span>
+                @endif
+            </td>
             <td> <form method="post" action="{{ route('requests.edit') }}">
                 @csrf
                 <input type="hidden" name="id_req" value="{{$item->id}}"/>

@@ -27,7 +27,16 @@
       </div>
       <div class="form-group">
         <label for="status">Status</label>
-        <input type="input" id="status" name="status" value="{{$requests->status}}" required></input>
+        <select class="form-select" aria-label="Default select example" name="status" required>
+          @if($requests->status)
+            <span>reviewed</span>
+            <option value="0">not reviewed</option>
+            <option value="1" selected>reviewed</option>
+          @else
+            <option value="0" selected>not reviewed</option>
+            <option value="1">reviewed</option>
+          @endif
+        </select>
       </div>
       <div class="form-group">
         <label for="message">Message</label>
