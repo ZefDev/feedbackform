@@ -14,19 +14,31 @@
       @csrf
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{ old('email')}}" required>
+        @error('email')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
       </div>
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="input" class="form-control" id="name"  name="name" placeholder="name" required>
+        <input type="input" class="form-control" id="name"  name="name" placeholder="name" value="{{ old('name')}}" required>
+        @error('name')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
       </div>
       <div class="form-group">
         <label for="number_phone">Number phone</label>
-        <input type="number" class="form-control" id="number_phone"  name="number_phone" placeholder="Number phone" required>
+        <input type="number" class="form-control" id="number_phone"  name="number_phone" placeholder="Number phone" value="{{ old('number_phone')}}" required>
+        @error('number_phone')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
       </div>
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+        <textarea class="form-control" id="message" name="message" rows="3" required>{{ old('message')}}</textarea>
+        @error('message')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
       </div>
       <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send"></input>
     </form>

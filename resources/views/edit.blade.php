@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-8">
-    <form class="needs-validation was-validated" action = "{{ route('requests.update') }}" novalidate="" method = "post">
+    <form class="needs-validation was-validated" action = "{{ route('requests.update') }}" method = "post">
       @csrf
       <input type="hidden" name="id_req" value="{{$requests->id}}"/>
       <div class="form-group">

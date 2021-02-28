@@ -51,9 +51,10 @@
           @endforeach
         </tbody>
       </table>
+      {{$requests->links()}}
     </div>
     <div class="col-md-1"></div>
     </div>
 </div>
-{{$requests->links()}}
+
 @endsection

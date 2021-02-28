@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Requests;
+use App\Http\Requests\ValidationRequest;
 
 class RequestsController extends Controller
 {
@@ -20,10 +21,10 @@ class RequestsController extends Controller
 
   /**
    * Show the form for creating a new resource.
-   *
+   * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function create(Request $request)
+  public function create(ValidationRequest $request)
   {
     $item = new Requests;
     $item->name = $request->input('name');
@@ -43,7 +44,7 @@ class RequestsController extends Controller
    */
   public function store(Request $request)
   {
-      $requests =  Requests::paginate(10);
+      $requests =  Requests::paginate(5);
       return View('requests',compact('requests'));
   }
 
